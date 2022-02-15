@@ -1,0 +1,22 @@
+a:hover {
+  text-decoration: underline;
+}
+
+body[data-theme='light'] {
+  --text-color: hsl(200, 15%, 8%);
+  --input-color: hsl(0, 0%, 52%);
+  --bg-color: hsl(0, 0%, 98%);
+  --elems-color: hsl(0, 0%, 100%);
+}
+
+body[data-theme='dark'] {
+  --bg-color: hsl(207, 26%, 17%);
+  --text-color: hsl(0, 0%, 100%);
+  --elems-color: hsl(209, 23%, 22%);
+}
+
+body {
+  font-family: 'Nunito Sans', sans-serif;
+  color: var(--text-color);
+  background-color: var(--bg-color);
+}
