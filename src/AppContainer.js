@@ -1,12 +1,13 @@
 import { useEffect } from 'react';
 import { connect } from 'react-redux';
 import App from './App';
-import { changeThemeTC } from './redux/appReducer';
+import { changeThemeTC, getCountriesTC } from './redux/appReducer';
 
 const AppContainer = (props) => {
   useEffect(() => {
-    // changeThemeTC(props.theme);
     document.body.setAttribute('data-theme', props.theme);
+
+    props.getCountries();
   }, [props.theme]);
 
   return <App />;
@@ -18,6 +19,7 @@ const mapStateToProps = (state) => ({
 
 const dispatchToProps = {
   changeTheme: changeThemeTC,
+  getCountries: getCountriesTC,
 };
 
 export default connect(mapStateToProps, dispatchToProps)(AppContainer);

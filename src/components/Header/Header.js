@@ -7,14 +7,16 @@ import ModeSwitcher from './ModeSwitcher/ModeSwitcher';
 
 const Header = (props) => {
   return (
-    <Container>
-      <div className={s.header}>
-        <NavLink to="/" className={s.homeLink}>
-          Where in the world?
-        </NavLink>
-        <ModeSwitcher {...props} />
-      </div>
-    </Container>
+    <div className={s.header__wrapper}>
+      <Container>
+        <div className={s.header}>
+          <NavLink to="/" className={s.homeLink}>
+            Where in the world?
+          </NavLink>
+          <ModeSwitcher {...props} />
+        </div>
+      </Container>
+    </div>
   );
 };
 

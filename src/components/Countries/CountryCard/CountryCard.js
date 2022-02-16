@@ -1,0 +1,32 @@
+import { NavLink } from 'react-router-dom';
+import s from './CountryCard.module.scss';
+
+const CountryCard = (props) => {
+  return (
+    <div className={s.countryCard}>
+      <NavLink to='/'>
+        <img
+          className={s.countryCard__flag}
+          src={props.flagURL}
+          alt="countryFlag"
+        />
+      </NavLink>
+      <div className={s.countryCard__info}>
+        <NavLink className={s.countryCard__name} to="/">
+          {props.countryName}
+        </NavLink>
+        <p className={s.countryCard__about}>
+          <span className={s.bold}>Population:</span> {props.population}
+        </p>
+        <p className={s.countryCard__about}>
+          <span className={s.bold}>Region:</span> {props.region}
+        </p>
+        <p className={s.countryCard__about}>
+          <span className={s.bold}>Capital:</span> {props.capital}
+        </p>
+      </div>
+    </div>
+  );
+};
+
+export default CountryCard;
