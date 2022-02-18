@@ -2,6 +2,7 @@ import { BrowserRouter } from 'react-router-dom';
 import './App.scss';
 import Controls from './components/Controls/Controls';
 import Countries from './components/Countries/Countries';
+import Country from './components/Country/Country';
 
 import Header from './components/Header/Header';
 import Main from './components/Main/Main';
@@ -12,8 +13,9 @@ const App = () => {
       <BrowserRouter>
         <Header />
         <Main>
-          <Controls />
-          <Countries />
+          {/* <Controls /> */}
+          {/* <Countries /> */}
+          <Country />
         </Main>
       </BrowserRouter>
     </div>

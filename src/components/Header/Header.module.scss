@@ -1,5 +1,6 @@
 .header__wrapper {
   box-shadow: var(--shadow);
+  margin-bottom: 44px;
 }
 
 .header {
@@ -7,7 +8,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 44px;
 }
 
 .homeLink {

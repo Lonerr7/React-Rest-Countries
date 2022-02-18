@@ -1,0 +1,36 @@
+.country {
+  margin-top: 34px;
+
+  &__backLink {
+    display: flex;
+    align-items: center;
+    color: var(--text-color);
+    padding: 12px 32px;
+    width: 136px;
+    border-radius: 3px;
+    border: 1px solid var(--text-color);
+    margin-bottom: 106px;
+  }
+
+  &__arrowBack {
+    margin-right: 14px;
+  }
+
+  &__countryInfoBox {
+    display: flex;  
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__countryFlagBox {
+    // width: 564px;
+    // height: 400px;
+    margin-right: 122px;
+  }
+
+  &__countryFlag {
+    object-fit: cover;
+    width: 564px;
+    height: 400px;
+  }
+}

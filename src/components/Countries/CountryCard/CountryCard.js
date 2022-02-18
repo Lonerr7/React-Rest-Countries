@@ -4,7 +4,7 @@ import s from './CountryCard.module.scss';
 const CountryCard = (props) => {
   return (
     <div className={s.countryCard}>
-      <NavLink to='/'>
+      <NavLink to="/">
         <img
           className={s.countryCard__flag}
           src={props.flagURL}
@@ -16,7 +16,8 @@ const CountryCard = (props) => {
           {props.countryName}
         </NavLink>
         <p className={s.countryCard__about}>
-          <span className={s.bold}>Population:</span> {props.population}
+          <span className={s.bold}>Population:</span>
+          {props.population.toLocaleString()}
         </p>
         <p className={s.countryCard__about}>
           <span className={s.bold}>Region:</span> {props.region}
