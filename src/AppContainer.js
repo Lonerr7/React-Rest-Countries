@@ -7,7 +7,7 @@ const AppContainer = (props) => {
   useEffect(() => {
     document.body.setAttribute('data-theme', props.theme);
 
-    // props.getCountries();
+    props.getCountries();
   }, [props.theme]);
 
   return <App />;

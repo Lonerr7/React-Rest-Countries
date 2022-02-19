@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import Container from '../common/Container/Container';
+import Preloader from '../common/Preloader/Preloader';
 import s from './Countries.module.scss';
 import CountryCard from './CountryCard/CountryCard';
 
@@ -17,7 +18,11 @@ const Countries = (props) => {
 
   return (
     <Container>
-      <div className={s.countries}>{countriesElements}</div>
+      {props.countries.length === 0 ? (
+        <Preloader />
+      ) : (
+        <div className={s.countries}>{countriesElements}</div>
+      )}
     </Container>
   );
 };
