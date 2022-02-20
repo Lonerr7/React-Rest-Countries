@@ -10,6 +10,8 @@
     border-radius: 3px;
     border: 1px solid var(--text-color);
     margin-bottom: 106px;
+    background-color: transparent;
+    font-size: inherit;
   }
 
   &__arrowBack {
@@ -19,7 +21,7 @@
   &__countryInfoBox {
     display: flex;  
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
   }
 
   &__countryFlagBox {

@@ -4,7 +4,7 @@ import s from './CountryCard.module.scss';
 const CountryCard = (props) => {
   return (
     <div className={s.countryCard}>
-      <NavLink to={`/countries/${props.countryName}`}>
+      <NavLink className={s.countryCard__flagLink} to={`/countries/${props.countryName}`}>
         <img
           className={s.countryCard__flag}
           src={props.flagURL}

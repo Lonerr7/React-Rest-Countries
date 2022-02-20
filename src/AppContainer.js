@@ -5,9 +5,15 @@ import { changeThemeTC, getCountriesTC } from './redux/appReducer';
 
 const AppContainer = (props) => {
   useEffect(() => {
-    document.body.setAttribute('data-theme', props.theme);
+    if (!localStorage.getItem('theme')) {
+      document.body.setAttribute('data-theme', props.theme);
+      localStorage.setItem('theme', props.theme);
+    } else {
+      props.changeTheme(localStorage.getItem('theme'));
+    }
 
     props.getCountries();
+    // eslint-disable-next-line
   }, [props.theme]);
 
   return <App />;

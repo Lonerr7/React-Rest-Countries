@@ -1,7 +1,13 @@
 import { IoSearch } from 'react-icons/io5';
 import s from './Search.module.scss';
 
-const Search = () => {
+const Search = (props) => {
+
+  const onSearchChange = (e) => {
+    props.changeSearchText(e.target.value);
+    props.displaySearchedCountries(e.target.value.toLowerCase());
+  };
+
   return (
     <div className={s.search}>
       <label htmlFor="countriesSearch" className={s.searchLabel}>
@@ -11,7 +17,9 @@ const Search = () => {
           type="search"
           id="countriesSearch"
           name="search"
-          placeholder='Search for a country...'
+          placeholder="Search for a country..."
+          value={props.searchText}
+          onChange={onSearchChange}
         />
       </label>
     </div>

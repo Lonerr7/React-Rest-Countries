@@ -4,12 +4,16 @@ const CHANGE_THEME = 'CHANGE_THEME';
 const GET_COUNTRIES = 'GET_COUNTRIES';
 const GET_CURRENT_COUNTRY = 'GET_CURRENT_COUNTRY';
 const GET_CURRENT_COUNTRY_NEIGHBORS = 'GET_CURRENT_COUNTRY_NEIGHBORS';
+const CHANGE_SEARCH_TEXT = 'CHANGE_SEARCH_TEXT';
+const DISPLAY_SEARCHED_COUNTRIES = 'DISPLAY_SEARCHED_COUNTRIES';
 
 const initialState = {
   theme: 'light',
   countries: [],
   currentCountry: {},
   currentCountryNeighbors: [],
+  filteredCountries: [],
+  searchText: '',
 };
 
 const appReducer = (state = initialState, action) => {
@@ -23,6 +27,7 @@ const appReducer = (state = initialState, action) => {
       return {
         ...state,
         countries: action.countries,
+        filteredCountries: action.countries,
       };
     case GET_CURRENT_COUNTRY:
       return {
@@ -33,6 +38,18 @@ const appReducer = (state = initialState, action) => {
       return {
         ...state,
         currentCountryNeighbors: action.currentCountryNeighbors,
+      };
+    case CHANGE_SEARCH_TEXT:
+      return {
+        ...state,
+        searchText: action.newSearchText,
+      };
+    case DISPLAY_SEARCHED_COUNTRIES:
+      return {
+        ...state,
+        filteredCountries: state.countries.filter((t) =>
+          t.name.common.toLowerCase().includes(action.searchText)
+        ),
       };
     default:
       return state;
@@ -59,10 +76,21 @@ const getCountryNeighborsAC = (currentCountryNeighbors) => ({
   currentCountryNeighbors,
 });
 
+export const changeSearchTextAC = (newSearchText) => ({
+  type: CHANGE_SEARCH_TEXT,
+  newSearchText,
+});
+
+export const displaySearchedCountriesAC = (searchText) => ({
+  type: DISPLAY_SEARCHED_COUNTRIES,
+  searchText,
+});
+
 export const changeThemeTC = (theme) => (dispatch) => {
   dispatch(changeThemeAC(theme));
 
   document.body.setAttribute('data-theme', theme);
+  localStorage.setItem('theme', theme);
 };
 
 export const getCountriesTC = () => async (dispatch) => {
@@ -76,12 +104,11 @@ export const getCurrentCountryTC =
       const response = await countriesAPI.getCurrentCountry(countryName);
 
       dispatch(getCurrentCountryAC(response.data[0]));
-      console.log(response.data[0]);
 
-      const borders = getState().app.currentCountry.borders.join();
-      console.log(borders);
-
-      await dispatch(getCountryNeighborsTC(borders));
+      if (getState().app.currentCountry.borders) {
+        const bordersStr = getState().app.currentCountry.borders.join();
+        await dispatch(getCountryNeighborsTC(bordersStr));
+      }
     } catch (error) {
       console.error(error);
     }

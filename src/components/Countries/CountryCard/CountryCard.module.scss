@@ -3,10 +3,16 @@
   border-radius: 5px 5px;
   border: 1px solid var(--text-color);
 
+  &__flagLink {
+    display: inline-block;
+    width: 264px;
+  }
+
   &__flag {
-    width: 100%;
+    width: 264px;
     height: 160px;
     border-radius: 5px 5px 0 0;
+    object-fit: cover;
   }
 
   &__info {

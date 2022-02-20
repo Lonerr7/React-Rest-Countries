@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { BiArrowBack } from 'react-icons/bi';
 import s from './Country.module.scss';
 import CountryInfo from './CountryInfo/CountryInfo';
@@ -6,13 +6,18 @@ import Preloader from '../common/Preloader/Preloader';
 
 const Country = (props) => {
   const country = props.country;
+  const navigate = useNavigate();
+
+  const goBackHandler = () => {
+    navigate(-1);
+  };
 
   return (
     <div className={s.country}>
-      <NavLink className={s.country__backLink} to="/">
+      <button className={s.country__backLink} onClick={goBackHandler}>
         <BiArrowBack className={s.country__arrowBack} />
         Back
-      </NavLink>
+      </button>
       {Object.keys(props.country).length === 0 ? (
         <Preloader />
       ) : (

@@ -3,9 +3,10 @@ import Container from '../common/Container/Container';
 import Preloader from '../common/Preloader/Preloader';
 import s from './Countries.module.scss';
 import CountryCard from './CountryCard/CountryCard';
+import Controls from '../Controls/Controls';
 
 const Countries = (props) => {
-  const countriesElements = props.countries.map((c) => (
+  const countriesElements = props.filteredCountries.map((c) => (
     <CountryCard
       key={c.name.common}
       flagURL={c.flags.svg}
@@ -18,6 +19,7 @@ const Countries = (props) => {
 
   return (
     <Container>
+      <Controls />
       {props.countries.length === 0 ? (
         <Preloader />
       ) : (
@@ -29,6 +31,7 @@ const Countries = (props) => {
 
 const mapStateToProps = (state) => ({
   countries: state.app.countries,
+  filteredCountries: state.app.filteredCountries,
 });
 
-export default connect(mapStateToProps)(Countries);
+export default connect(mapStateToProps, null)(Countries);

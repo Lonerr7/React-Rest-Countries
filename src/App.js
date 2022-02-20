@@ -1,6 +1,5 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.scss';
-import Controls from './components/Controls/Controls';
 import Countries from './components/Countries/Countries';
 import CountryContainer from './components/Country/CountryContainer/CountryContainer';
 
@@ -13,7 +12,7 @@ const App = () => {
       <BrowserRouter>
         <Header />
         <Main>
-          <Controls />
+          
           <Routes>
             <Route path="/" element={<Countries />} />
             <Route path="/countries/*" element={<CountryContainer />} />
