@@ -8,7 +8,7 @@ const ModeSwitcher = (props) => {
   };
 
   return (
-    <div>
+    <div className={s.modeSwitcher}>
       {props.theme === 'light' ? (
         <button className={s.btn} onClick={onChangeTheme}>
           <IoMoonOutline className={s.icon} />

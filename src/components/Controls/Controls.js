@@ -1,6 +1,5 @@
 import Search from './Search/Search';
 import s from './Controls.module.scss';
-import CustomSelect from './CustomSelect/CustomSelect';
 import { connect } from 'react-redux';
 import {
   changeSearchTextAC,
@@ -15,7 +14,6 @@ const Controls = (props) => {
         changeSearchText={props.changeSearchText}
         displaySearchedCountries={props.displaySearchedCountries}
       />
-      <CustomSelect />
     </div>
   );
 };

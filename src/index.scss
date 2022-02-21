@@ -22,15 +22,16 @@ body[data-theme='light'] {
   --bg-color: hsl(0, 0%, 98%);
   --elems-color: hsl(0, 0%, 100%);
 
-  --shadow: 0px 8px 24px rgba($color: #959da5, $alpha: 0.2);
+  --shadow: rgba($color: #959da5, $alpha: 0.2);
 }
 
 body[data-theme='dark'] {
   --bg-color: hsl(207, 26%, 17%);
   --text-color: hsl(0, 0%, 100%);
   --elems-color: hsl(209, 23%, 22%);
+  --input-color: hsl(0, 0%, 52%);
 
-  --shadow: 0px 0px 8px rgba($color: #f5f5f5, $alpha: 0.2);
+  --shadow: rgba($color: #f5f5f5, $alpha: 0.2);
 }
 
 body {

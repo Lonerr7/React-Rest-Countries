@@ -12,6 +12,10 @@
     margin-bottom: 106px;
     background-color: transparent;
     font-size: inherit;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 
   &__arrowBack {

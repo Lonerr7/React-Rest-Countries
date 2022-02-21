@@ -1,5 +1,5 @@
 .search {
-  width: 484px;
+  width: 100%;
 }
 
 .searchLabel {
@@ -26,4 +26,10 @@
   &::placeholder {
     font-size: 16px;
   }
+}
+
+@media (max-width: 540px) {
+  .searchInput {
+    padding: 12px 36px 12px 76px;
+  } 
 }

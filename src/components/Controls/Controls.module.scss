@@ -4,3 +4,9 @@
   align-items: center;
   margin-bottom: 50px;
 }
+
+@media (max-width: 540px) {
+  .controls {
+    margin-bottom: 40px;
+  } 
+}
