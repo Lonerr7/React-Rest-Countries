@@ -12,7 +12,6 @@ const App = () => {
       <BrowserRouter>
         <Header />
         <Main>
-          
           <Routes>
             <Route path="/" element={<Countries />} />
             <Route path="/countries/*" element={<CountryContainer />} />

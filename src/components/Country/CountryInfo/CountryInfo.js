@@ -19,6 +19,7 @@ const CountryInfo = (props) => {
         topLevelDomain={props.topLevelDomain}
         currency={props.rawCurrency[currencyKey].name}
         language={props.rawLanguage[languageKey]}
+        name={props.name}
       />
       <CountryBorders countryNeighbors={props.countryNeighbors} />
     </div>

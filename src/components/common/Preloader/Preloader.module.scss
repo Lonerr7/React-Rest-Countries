@@ -8,3 +8,21 @@
   text-align: center;
   width: 200px;
 }
+
+@media (max-width: 1180px) {
+  .preloader {
+    width: 130px;
+  }
+}
+
+@media (max-width: 800px) {
+  .preloader {
+    width: 110px;
+  }
+}
+
+@media (max-width: 540px) {
+  .preloader {
+    width: 70px;
+  }
+}

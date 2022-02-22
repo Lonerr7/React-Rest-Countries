@@ -23,7 +23,8 @@ const CountryText = (props) => {
       </div>
       <div className={s.countryInfo__textBox}>
         <p className={s.countryInfo__infoPiece}>
-          <span className={s.bold}>Top Level Domain: </span> {props.topLevelDomain}
+          <span className={s.bold}>Top Level Domain: </span>{' '}
+          {props.topLevelDomain}
         </p>
         <p className={s.countryInfo__infoPiece}>
           <span className={s.bold}>Currency: </span> {props.currency}
