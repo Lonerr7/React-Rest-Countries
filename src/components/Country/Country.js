@@ -25,31 +25,7 @@ const Country = (props) => {
         <BiArrowBack className={s.country__arrowBack} />
         Back
       </button>
-      {/* {!props.isCountry ? (
-        <Preloader />
-      ) : (
-        <div className={s.country__countryInfoBox}>
-          <div className={s.country__countryFlagBox}>
-            <img
-              className={s.country__countryFlag}
-              src={country.flags.svg}
-              alt="flag"
-            />
-          </div>
-          <CountryInfo
-            name={country.name.common}
-            rawNativeName={country.name.nativeName}
-            population={country.population}
-            region={country.region}
-            subRegion={country.subregion}
-            capital={country.capital[0]}
-            topLevelDomain={country.tld[0]}
-            rawCurrency={country.currencies}
-            rawLanguage={country.languages}
-            countryNeighbors={props.countryNeighbors}
-          />
-        </div>
-      )} */}
+
       {transition((style, item) => {
         return item ? (
           <animated.div style={style} className={s.country__countryInfoBox}>

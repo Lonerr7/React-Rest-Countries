@@ -10,7 +10,7 @@ const Header = (props) => {
     <div className={s.header__wrapper}>
       <Container>
         <div className={s.header}>
-          <NavLink to="/" className={s.homeLink}>
+          <NavLink to="/React-Rest-Countries/" className={s.homeLink}>
             Where in the world?
           </NavLink>
           <ModeSwitcher {...props} />
