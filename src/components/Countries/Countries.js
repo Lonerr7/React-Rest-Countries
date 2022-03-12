@@ -5,6 +5,8 @@ import CountryCard from './CountryCard/CountryCard';
 import Controls from '../Controls/Controls';
 
 const Countries = (props) => {
+  const isCountries = props.countries.length === 0 ? false : true;
+
   const countriesElements = props.filteredCountries.map((c) => (
     <CountryCard
       key={c.name.common}
@@ -19,10 +21,18 @@ const Countries = (props) => {
   return (
     <div>
       <Controls />
-      {props.countries.length === 0 ? (
+      {!isCountries ? (
         <Preloader />
       ) : (
-        <div className={s.countries}>{countriesElements}</div>
+        <div
+          className={
+            props.countries.length !== 0
+              ? s.countries
+              : `${s.countries} ${s.hidden}`
+          }
+        >
+          {countriesElements}
+        </div>
       )}
     </div>
   );
