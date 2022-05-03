@@ -1,15 +1,21 @@
 import { IoMoon, IoMoonOutline } from 'react-icons/io5';
+import { useDispatch, useSelector } from 'react-redux';
+import { changeTheme } from '../../../redux/countriesSlice';
 import s from './ModeSwitcher.module.scss';
 
-const ModeSwitcher = (props) => {
+const ModeSwitcher = () => {
+  const dispatch = useDispatch();
+  const theme = useSelector((state) => state.countries.theme);
+
   const onChangeTheme = () => {
-    const theme = props.theme === 'light' ? 'dark' : 'light';
-    props.changeTheme(theme);
+    const newTheme = theme === 'light' ? 'dark' : 'light';
+    dispatch(changeTheme({ newTheme }));
+    document.body.setAttribute('data-theme', newTheme)
   };
 
   return (
     <div className={s.modeSwitcher}>
-      {props.theme === 'light' ? (
+      {theme === 'light' ? (
         <button className={s.btn} onClick={onChangeTheme}>
           <IoMoonOutline className={s.icon} />
           Light Mode

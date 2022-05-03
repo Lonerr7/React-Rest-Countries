@@ -1,11 +1,9 @@
-import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { changeThemeTC } from '../../redux/appReducer';
 import Container from '../common/Container/Container';
 import s from './Header.module.scss';
 import ModeSwitcher from './ModeSwitcher/ModeSwitcher';
 
-const Header = (props) => {
+const Header = () => {
   return (
     <div className={s.header__wrapper}>
       <Container>
@@ -13,19 +11,11 @@ const Header = (props) => {
           <NavLink to="/React-Rest-Countries/" className={s.homeLink}>
             Where in the world?
           </NavLink>
-          <ModeSwitcher {...props} />
+          <ModeSwitcher />
         </div>
       </Container>
     </div>
   );
 };
 
-const mapStateToProps = (state) => ({
-  theme: state.app.theme,
-});
-
-const dispatchToProps = {
-  changeTheme: changeThemeTC,
-};
-
-export default connect(mapStateToProps, dispatchToProps)(Header);
+export default Header;

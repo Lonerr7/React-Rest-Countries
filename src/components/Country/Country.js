@@ -25,7 +25,6 @@ const Country = (props) => {
         <BiArrowBack className={s.country__arrowBack} />
         Back
       </button>
-
       {transition((style, item) => {
         return item ? (
           <animated.div style={style} className={s.country__countryInfoBox}>

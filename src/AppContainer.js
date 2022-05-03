@@ -1,31 +1,16 @@
 import { useEffect } from 'react';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 import App from './App';
-import { changeThemeTC, getCountriesTC } from './redux/appReducer';
 
-const AppContainer = (props) => {
+const AppContainer = () => {
+  const theme = useSelector((state) => state.countries.theme);
+
   useEffect(() => {
-    if (!localStorage.getItem('theme')) {
-      document.body.setAttribute('data-theme', props.theme);
-      localStorage.setItem('theme', props.theme);
-    } else {
-      props.changeTheme(localStorage.getItem('theme'));
-    }
-
-    props.getCountries();
+    document.body.setAttribute('data-theme', theme);
     // eslint-disable-next-line
-  }, [props.theme]);
+  }, []);
 
   return <App />;
 };
 
-const mapStateToProps = (state) => ({
-  theme: state.app.theme,
-});
-
-const dispatchToProps = {
-  changeTheme: changeThemeTC,
-  getCountries: getCountriesTC,
-};
-
-export default connect(mapStateToProps, dispatchToProps)(AppContainer);
+export default AppContainer;

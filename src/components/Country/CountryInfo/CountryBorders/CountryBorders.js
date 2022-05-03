@@ -6,7 +6,7 @@ const CountryBorders = (props) => {
     <NavLink
       className={s.countryInfo__borderLink}
       key={n.name.common}
-      to={`/countries/${n.name.common}`}
+      to={`/React-Rest-Countries/countries/${n.name.common}`}
     >
       {n.name.common}
     </NavLink>

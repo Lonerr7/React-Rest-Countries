@@ -1,4 +1,4 @@
-import { BrowserRouter, HashRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.scss';
 import Countries from './components/Countries/Countries';
 import CountryContainer from './components/Country/CountryContainer/CountryContainer';
@@ -11,12 +11,15 @@ const App = () => {
     <div className="App">
       <BrowserRouter>
         <Header />
-        <Main>
+        {/* <Main>
           <Routes>
             <Route path="/React-Rest-Countries/" element={<Countries />} />
-            <Route path="/React-Rest-Countries/countries/*" element={<CountryContainer />} />
+            <Route
+              path="/React-Rest-Countries/countries/*"
+              element={<CountryContainer />}
+            />
           </Routes>
-        </Main>
+        </Main> */}
       </BrowserRouter>
     </div>
   );
