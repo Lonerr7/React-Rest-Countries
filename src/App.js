@@ -11,7 +11,7 @@ const App = () => {
     <div className="App">
       <BrowserRouter>
         <Header />
-        {/* <Main>
+        <Main>
           <Routes>
             <Route path="/React-Rest-Countries/" element={<Countries />} />
             <Route
@@ -19,7 +19,7 @@ const App = () => {
               element={<CountryContainer />}
             />
           </Routes>
-        </Main> */}
+        </Main>
       </BrowserRouter>
     </div>
   );

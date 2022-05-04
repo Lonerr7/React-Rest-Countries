@@ -1,11 +1,16 @@
 import { IoSearch } from 'react-icons/io5';
+import { useDispatch, useSelector } from 'react-redux';
 import s from './Search.module.scss';
+import { changeSearchText, displaySearchedCountries } from '../../../redux/countriesSlice';
 
-const Search = (props) => {
+const Search = () => {
+  const dispatch = useDispatch();
+  const searchText = useSelector((state) => state.countries.searchText);
 
   const onSearchChange = (e) => {
-    props.changeSearchText(e.target.value);
-    props.displaySearchedCountries(e.target.value.toLowerCase());
+    dispatch(changeSearchText({ newText: e.target.value }));
+    dispatch(displaySearchedCountries())
+    console.log(`changed`);
   };
 
   return (
@@ -18,8 +23,8 @@ const Search = (props) => {
           id="countriesSearch"
           name="search"
           placeholder="Search for a country..."
-          value={props.searchText}
           onChange={onSearchChange}
+          value={searchText}
         />
       </label>
     </div>

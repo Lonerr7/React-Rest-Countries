@@ -1,13 +1,17 @@
-import { connect } from 'react-redux';
 import Preloader from '../common/Preloader/Preloader';
 import s from './Countries.module.scss';
 import CountryCard from './CountryCard/CountryCard';
 import Controls from '../Controls/Controls';
+import { useSelector } from 'react-redux';
 
-const Countries = (props) => {
-  const isCountries = props.countries.length === 0 ? false : true;
+const Countries = () => {
+  const countries = useSelector((state) => state.countries.countries);
+  const filteredCountries = useSelector(
+    (state) => state.countries.filteredCountries
+  );
+  const isFetching = useSelector((state) => state.countries.isFetching);
 
-  const countriesElements = props.filteredCountries.map((c) => (
+  const countriesElements = filteredCountries.map((c) => (
     <CountryCard
       key={c.name.common}
       flagURL={c.flags.svg}
@@ -21,14 +25,12 @@ const Countries = (props) => {
   return (
     <div>
       <Controls />
-      {!isCountries ? (
+      {isFetching ? (
         <Preloader />
       ) : (
         <div
           className={
-            props.countries.length !== 0
-              ? s.countries
-              : `${s.countries} ${s.hidden}`
+            countries.length !== 0 ? s.countries : `${s.countries} ${s.hidden}`
           }
         >
           {countriesElements}
@@ -38,9 +40,4 @@ const Countries = (props) => {
   );
 };
 
-const mapStateToProps = (state) => ({
-  countries: state.app.countries,
-  filteredCountries: state.app.filteredCountries,
-});
-
-export default connect(mapStateToProps, null)(Countries);
+export default Countries;

@@ -10,7 +10,7 @@ const ModeSwitcher = () => {
   const onChangeTheme = () => {
     const newTheme = theme === 'light' ? 'dark' : 'light';
     dispatch(changeTheme({ newTheme }));
-    document.body.setAttribute('data-theme', newTheme)
+    document.body.setAttribute('data-theme', newTheme);
   };
 
   return (
