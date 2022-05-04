@@ -21,7 +21,7 @@ const CountryInfo = (props) => {
         language={props.rawLanguage[languageKey]}
         name={props.name}
       />
-      <CountryBorders countryNeighbors={props.countryNeighbors} />
+      <CountryBorders />
     </div>
   );
 };

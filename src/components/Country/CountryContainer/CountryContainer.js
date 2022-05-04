@@ -1,43 +1,35 @@
 import { useEffect } from 'react';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useMatch } from 'react-router-dom';
 import {
-  getCurrentCountryTC,
-  getCurrentCountryAC,
-} from '../../../redux/appReducer';
+  getCurrentCountry,
+  resetCurrentCountry,
+} from '../../../redux/currentCountrySlice';
+import Preloader from '../../common/Preloader/Preloader';
+
 import Country from '../Country';
 
-const CountryContainer = (props) => {
+const CountryContainer = () => {
+  const dispatch = useDispatch();
+  const country = useSelector((state) => state.currentCountry.currentCountry);
+
   const match = useMatch(`/React-Rest-Countries/countries/:country`);
   const currentCountry = match.params.country;
-  const isCountry = Object.keys(props.country).length === 0 ? false : true;
+  const isCountry = Object.keys(country).length;
 
   useEffect(() => {
-    props.getCurrentCounty(currentCountry);
+    dispatch(getCurrentCountry({ countryName: currentCountry }));
 
     return () => {
-      props.getCurrentCountryAC({});
+      dispatch(resetCurrentCountry());
     };
+
     // eslint-disable-next-line
   }, [currentCountry]);
 
   return (
-    <Country
-      country={props.country}
-      countryNeighbors={props.countryNeighbors}
-      isCountry={isCountry}
-    />
+    <div>{!isCountry ? <Preloader /> : <Country country={country} />}</div>
   );
 };
 
-const mapStateToProps = (state) => ({
-  country: state.app.currentCountry,
-  countryNeighbors: state.app.currentCountryNeighbors,
-});
-
-const dispatchToProps = {
-  getCurrentCounty: getCurrentCountryTC,
-  getCurrentCountryAC,
-};
-
-export default connect(mapStateToProps, dispatchToProps)(CountryContainer);
+export default CountryContainer;

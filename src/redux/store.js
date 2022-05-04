@@ -11,9 +11,11 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import countriesSlice from './countriesSlice';
+import currentCountrySlice from './currentCountrySlice';
 
 const rootReducer = combineReducers({
   countries: countriesSlice,
+  currentCountry: currentCountrySlice,
 });
 
 const persistConfig = {

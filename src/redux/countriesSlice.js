@@ -19,7 +19,7 @@ const countriesSlice = createSlice({
     changeSearchText(state, action) {
       state.searchText = action.payload.newText;
     },
-    displaySearchedCountries(state, action) {
+    displaySearchedCountries(state) {
       state.filteredCountries = state.countries.filter((c) =>
         c.name.common.toLowerCase().includes(state.searchText.toLowerCase())
       );

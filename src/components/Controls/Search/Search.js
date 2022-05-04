@@ -1,7 +1,10 @@
 import { IoSearch } from 'react-icons/io5';
 import { useDispatch, useSelector } from 'react-redux';
 import s from './Search.module.scss';
-import { changeSearchText, displaySearchedCountries } from '../../../redux/countriesSlice';
+import {
+  changeSearchText,
+  displaySearchedCountries,
+} from '../../../redux/countriesSlice';
 
 const Search = () => {
   const dispatch = useDispatch();
@@ -9,8 +12,7 @@ const Search = () => {
 
   const onSearchChange = (e) => {
     dispatch(changeSearchText({ newText: e.target.value }));
-    dispatch(displaySearchedCountries())
-    console.log(`changed`);
+    dispatch(displaySearchedCountries());
   };
 
   return (

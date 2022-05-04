@@ -1,8 +1,13 @@
+import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import s from '../CountryInfo.module.scss';
 
-const CountryBorders = (props) => {
-  const neighborsElements = props.countryNeighbors.map((n) => (
+const CountryBorders = () => {
+  const countryNeighbors = useSelector(
+    (state) => state.currentCountry.currentCountryNeighbors
+  );
+
+  const neighborsElements = countryNeighbors.map((n) => (
     <NavLink
       className={s.countryInfo__borderLink}
       key={n.name.common}
