@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.scss';
 import Countries from './components/Countries/Countries';
 import CountryContainer from './components/Country/CountryContainer/CountryContainer';
@@ -9,7 +9,7 @@ import Main from './components/Main/Main';
 const App = () => {
   return (
     <div className="App">
-      <BrowserRouter>
+      <Router>
         <Header />
         <Main>
           <Routes>
@@ -20,7 +20,7 @@ const App = () => {
             />
           </Routes>
         </Main>
-      </BrowserRouter>
+      </Router>
     </div>
   );
 };

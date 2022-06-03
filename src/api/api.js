@@ -10,6 +10,7 @@ export const countriesAPI = {
   },
 
   getCurrentCountry(countryName) {
+    console.log(countryName);
     return axiosInstance.get(`name/${countryName}`);
   },
 

@@ -2,7 +2,6 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { countriesAPI } from '../api/api';
 
 const initialState = {
-  theme: 'light',
   countries: [],
   filteredCountries: [],
   searchText: '',
@@ -13,9 +12,6 @@ const countriesSlice = createSlice({
   name: 'countries',
   initialState,
   reducers: {
-    changeTheme(state, action) {
-      state.theme = action.payload.newTheme;
-    },
     changeSearchText(state, action) {
       state.searchText = action.payload.newText;
     },
@@ -51,6 +47,6 @@ export const getCountries = createAsyncThunk(
   }
 );
 
-export const { changeTheme, changeSearchText, displaySearchedCountries } =
+export const { changeSearchText, displaySearchedCountries } =
   countriesSlice.actions;
 export default countriesSlice.reducer;

@@ -1,11 +1,11 @@
 import { IoMoon, IoMoonOutline } from 'react-icons/io5';
 import { useDispatch, useSelector } from 'react-redux';
-import { changeTheme } from '../../../redux/countriesSlice';
+import { changeTheme } from '../../../redux/themeSlice';
 import s from './ModeSwitcher.module.scss';
 
 const ModeSwitcher = () => {
   const dispatch = useDispatch();
-  const theme = useSelector((state) => state.countries.theme);
+  const theme = useSelector((state) => state.theme.theme);
 
   const onChangeTheme = () => {
     const newTheme = theme === 'light' ? 'dark' : 'light';

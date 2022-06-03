@@ -4,7 +4,7 @@ import App from './App';
 import { changeSearchText, getCountries } from './redux/countriesSlice';
 
 const AppContainer = () => {
-  const theme = useSelector((state) => state.countries.theme);
+  const theme = useSelector((state) => state.theme.theme);
   const dispatch = useDispatch();
 
   useEffect(() => {

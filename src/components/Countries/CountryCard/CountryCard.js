@@ -4,7 +4,10 @@ import s from './CountryCard.module.scss';
 const CountryCard = (props) => {
   return (
     <div className={s.countryCard}>
-      <NavLink className={s.countryCard__flagLink} to={`/React-Rest-Countries/countries/${props.countryName}`}>
+      <NavLink
+        className={s.countryCard__flagLink}
+        to={`/React-Rest-Countries/countries/${props.countryName}`}
+      >
         <img
           className={s.countryCard__flag}
           src={props.flagURL}
@@ -26,7 +29,8 @@ const CountryCard = (props) => {
           <span className={s.bold}>Region:</span> {props.region}
         </p>
         <p className={s.countryCard__about}>
-          <span className={s.bold}>Capital:</span> {props.capital}
+          <span className={s.bold}>Capital:</span>{' '}
+          {props.capital ? props.capital : 'No Capital'}
         </p>
       </div>
     </div>

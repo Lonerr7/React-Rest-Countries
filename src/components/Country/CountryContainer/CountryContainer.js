@@ -16,11 +16,13 @@ const CountryContainer = () => {
   const match = useMatch(`/React-Rest-Countries/countries/:country`);
   const currentCountry = match.params.country;
   const isCountry = Object.keys(country).length;
+  console.log(currentCountry, country, isCountry);
 
   useEffect(() => {
     dispatch(getCurrentCountry({ countryName: currentCountry }));
 
     return () => {
+      console.log(`unmount`);
       dispatch(resetCurrentCountry());
     };
 

@@ -5,6 +5,12 @@ import CountryInfo from './CountryInfo/CountryInfo';
 
 const Country = (props) => {
   const country = props.country;
+  const capital = country.hasOwnProperty('capital')
+    ? country.capital[0]
+    : 'No capital';
+  const rawCurrency = country.hasOwnProperty('currencies')
+    ? country.currencies
+    : null;
   const navigate = useNavigate();
 
   const goBackHandler = () => {
@@ -31,9 +37,9 @@ const Country = (props) => {
           population={country.population}
           region={country.region}
           subRegion={country.subregion}
-          capital={country.capital[0]}
+          capital={capital}
           topLevelDomain={country.tld[0]}
-          rawCurrency={country.currencies}
+          rawCurrency={rawCurrency}
           rawLanguage={country.languages}
         />
       </div>

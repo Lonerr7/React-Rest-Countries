@@ -4,8 +4,12 @@ import CountryText from './CountryText/CountryText';
 
 const CountryInfo = (props) => {
   const [nativeNameKey] = Object.keys(props.rawNativeName);
-  const [currencyKey] = Object.keys(props.rawCurrency);
+  const currencies = props.rawCurrency ? Object.keys(props.rawCurrency) : null;
   const [languageKey] = Object.keys(props.rawLanguage);
+
+  const currency = currencies
+    ? props.rawCurrency[currencies[0]].name
+    : 'No Currencies';
 
   return (
     <div className={s.countryInfo}>
@@ -17,7 +21,7 @@ const CountryInfo = (props) => {
         subRegion={props.subRegion}
         capital={props.capital}
         topLevelDomain={props.topLevelDomain}
-        currency={props.rawCurrency[currencyKey].name}
+        currency={currency}
         language={props.rawLanguage[languageKey]}
         name={props.name}
       />

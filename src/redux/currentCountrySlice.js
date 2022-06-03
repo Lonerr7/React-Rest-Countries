@@ -13,6 +13,7 @@ const currentCountrySlice = createSlice({
   reducers: {
     resetCurrentCountry(state) {
       state.currentCountry = {};
+      state.currentCountryNeighbors = [];
     },
   },
   extraReducers: (builder) => {
@@ -45,9 +46,14 @@ export const getCurrentCountry = createAsyncThunk(
     try {
       const response = await countriesAPI.getCurrentCountry(countryName);
       const country = response.data[0];
-      const borders = country.borders.join();
 
-      await dispatch(getCountriesBorders({ borders }));
+      const borders = country.hasOwnProperty('borders')
+        ? country.borders.join()
+        : null;
+
+      if (borders) {
+        await dispatch(getCountriesBorders({ borders }));
+      }
 
       return country;
     } catch (error) {}
