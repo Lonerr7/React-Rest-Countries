@@ -19,7 +19,7 @@ const CountryContainer = () => {
   console.log(currentCountry, country, isCountry);
 
   useEffect(() => {
-    dispatch(getCurrentCountry({ countryName: currentCountry }));
+    dispatch(getCurrentCountry(currentCountry));
 
     return () => {
       console.log(`unmount`);

@@ -79,3 +79,9 @@ export type CountriesState = {
   searchText: string;
   isFetching: boolean;
 };
+
+export type CurrentCountryState = {
+  currentCountry: CountryType | {},
+  currentCountryNeighbors: Array<CountryType>,
+  isLoading: boolean,
+}
