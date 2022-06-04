@@ -1,7 +1,8 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import { countriesAPI } from '../api/api';
+import { CountriesState, CountryType } from '../types/types';
 
-const initialState = {
+const initialState: CountriesState = {
   countries: [],
   filteredCountries: [],
   searchText: '',
@@ -12,7 +13,7 @@ const countriesSlice = createSlice({
   name: 'countries',
   initialState,
   reducers: {
-    changeSearchText(state, action) {
+    changeSearchText(state, action: PayloadAction<{ newText: string }>) {
       state.searchText = action.payload.newText;
     },
     displaySearchedCountries(state) {
@@ -23,11 +24,14 @@ const countriesSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(getCountries.fulfilled, (state, action) => {
-        state.countries = action.payload;
-        state.filteredCountries = action.payload;
-        state.isFetching = false;
-      })
+      .addCase(
+        getCountries.fulfilled,
+        (state, action: PayloadAction<CountryType[]>) => {
+          state.countries = action.payload;
+          state.filteredCountries = action.payload;
+          state.isFetching = false;
+        }
+      )
       .addCase(getCountries.pending, (state) => {
         state.isFetching = true;
       });
@@ -36,13 +40,13 @@ const countriesSlice = createSlice({
 
 export const getCountries = createAsyncThunk(
   'countries/getCountries',
-  async function (_, { rejectWithValue }) {
+  async (_, { rejectWithValue }) => {
     try {
       const response = await countriesAPI.getCountries();
 
       return response.data;
     } catch (error) {
-      return rejectWithValue(error.message);
+      if (error instanceof Error) return rejectWithValue(error.message);
     }
   }
 );
