@@ -1,11 +1,11 @@
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import App from './App';
+import { useAppDispatch, useAppSelector } from './hooks/hooks';
 import { changeSearchText, getCountries } from './redux/countriesSlice';
 
-const AppContainer = () => {
-  const theme = useSelector((state) => state.theme.theme);
-  const dispatch = useDispatch();
+const AppContainer: React.FC = () => {
+  const theme = useAppSelector((state) => state.theme.theme);
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     document.body.setAttribute('data-theme', theme);

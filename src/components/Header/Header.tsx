@@ -3,7 +3,7 @@ import Container from '../common/Container/Container';
 import s from './Header.module.scss';
 import ModeSwitcher from './ModeSwitcher/ModeSwitcher';
 
-const Header = () => {
+const Header: React.FC = () => {
   return (
     <div className={s.header__wrapper}>
       <Container>

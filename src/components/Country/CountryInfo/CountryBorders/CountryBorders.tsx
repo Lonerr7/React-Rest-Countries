@@ -1,9 +1,9 @@
-import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import { useAppSelector } from '../../../../hooks/hooks';
 import s from '../CountryInfo.module.scss';
 
-const CountryBorders = () => {
-  const countryNeighbors = useSelector(
+const CountryBorders: React.FC = () => {
+  const countryNeighbors = useAppSelector(
     (state) => state.currentCountry.currentCountryNeighbors
   );
 

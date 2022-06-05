@@ -1,6 +1,17 @@
 import s from './../CountryInfo.module.scss';
 
-const CountryText = (props) => {
+type CountryTextProps = {
+  nativeName: string;
+  population: number;
+  region: string;
+  subRegion: string;
+  capital: string;
+  topLevelDomain: string;
+  currency: string;
+  language: string;
+};
+
+const CountryText: React.FC<CountryTextProps> = (props) => {
   return (
     <div className={s.countryInfo__box}>
       <div className={s.countryInfo__textBox}>

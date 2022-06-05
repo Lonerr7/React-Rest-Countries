@@ -2,15 +2,20 @@ import { useNavigate } from 'react-router-dom';
 import { BiArrowBack } from 'react-icons/bi';
 import s from './Country.module.scss';
 import CountryInfo from './CountryInfo/CountryInfo';
+import { CountryType } from '../../types/types';
 
-const Country = (props) => {
-  const country = props.country;
+type CountryProps = {
+  country: CountryType;
+};
+
+const Country: React.FC<CountryProps> = ({ country }) => {
   const capital = country.hasOwnProperty('capital')
     ? country.capital[0]
     : 'No capital';
   const rawCurrency = country.hasOwnProperty('currencies')
     ? country.currencies
-    : null;
+    : null as any;
+
   const navigate = useNavigate();
 
   const goBackHandler = () => {

@@ -1,20 +1,23 @@
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { useMatch } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '../../../hooks/hooks';
 import {
   getCurrentCountry,
   resetCurrentCountry,
 } from '../../../redux/currentCountrySlice';
+import { CountryType } from '../../../types/types';
 import Preloader from '../../common/Preloader/Preloader';
 
 import Country from '../Country';
 
 const CountryContainer = () => {
-  const dispatch = useDispatch();
-  const country = useSelector((state) => state.currentCountry.currentCountry);
+  const dispatch = useAppDispatch();
+  const country = useAppSelector(
+    (state) => state.currentCountry.currentCountry
+  ) as CountryType;
 
-  const match = useMatch(`/React-Rest-Countries/countries/:country`);
-  const currentCountry = match.params.country;
+  const match = useMatch(`/React-Rest-Countries/countries/:country`)!;
+  const currentCountry = match.params.country as string;
   const isCountry = Object.keys(country).length;
   console.log(currentCountry, country, isCountry);
 

@@ -81,7 +81,7 @@ export type CountriesState = {
 };
 
 export type CurrentCountryState = {
-  currentCountry: CountryType | {},
-  currentCountryNeighbors: Array<CountryType>,
-  isLoading: boolean,
-}
+  currentCountry: CountryType | {};
+  currentCountryNeighbors: Array<CountryType>;
+  isLoading: boolean;
+};
