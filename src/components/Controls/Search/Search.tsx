@@ -1,16 +1,17 @@
 import { IoSearch } from 'react-icons/io5';
-import { useDispatch, useSelector } from 'react-redux';
 import s from './Search.module.scss';
 import {
   changeSearchText,
   displaySearchedCountries,
 } from '../../../redux/countriesSlice';
+import { useAppDispatch, useAppSelector } from '../../../hooks/hooks';
+import React from 'react';
 
-const Search = () => {
-  const dispatch = useDispatch();
-  const searchText = useSelector((state) => state.countries.searchText);
+const Search: React.FC = () => {
+  const dispatch = useAppDispatch();
+  const searchText = useAppSelector((state) => state.countries.searchText);
 
-  const onSearchChange = (e) => {
+  const onSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(changeSearchText({ newText: e.target.value }));
     dispatch(displaySearchedCountries());
   };

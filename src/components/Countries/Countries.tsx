@@ -2,14 +2,14 @@ import Preloader from '../common/Preloader/Preloader';
 import s from './Countries.module.scss';
 import CountryCard from './CountryCard/CountryCard';
 import Controls from '../Controls/Controls';
-import { useSelector } from 'react-redux';
+import { useAppSelector } from '../../hooks/hooks';
 
-const Countries = () => {
-  const countries = useSelector((state) => state.countries.countries);
-  const filteredCountries = useSelector(
+const Countries: React.FC = () => {
+  const countries = useAppSelector((state) => state.countries.countries);
+  const filteredCountries = useAppSelector(
     (state) => state.countries.filteredCountries
   );
-  const isFetching = useSelector((state) => state.countries.isFetching);
+  const isFetching = useAppSelector((state) => state.countries.isFetching);
 
   const countriesElements = filteredCountries.map((c) => (
     <CountryCard

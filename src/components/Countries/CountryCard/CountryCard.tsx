@@ -1,7 +1,15 @@
 import { NavLink } from 'react-router-dom';
 import s from './CountryCard.module.scss';
 
-const CountryCard = (props) => {
+type CountryCardProps = {
+  flagURL: string;
+  countryName: string;
+  population: number;
+  region: string;
+  capital: string[];
+};
+
+const CountryCard: React.FC<CountryCardProps> = (props) => {
   return (
     <div className={s.countryCard}>
       <NavLink
